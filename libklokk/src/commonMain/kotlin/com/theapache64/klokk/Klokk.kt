@@ -11,37 +11,42 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.theapache64.klokk.composable.BottomToolBar
 import com.theapache64.klokk.composable.Clock
-import com.theapache64.klokk.movement.alphabet.TextMatrixGenerator
 import com.theapache64.klokk.movement.core.Movement
 import com.theapache64.klokk.theme.KlokkTheme
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Composable
-fun KlokkApp() {
-    /**
-     * To control the infinite animation loop
-     */
-    val infiniteLoopScope = rememberCoroutineScope()
-
+fun KlokkApp(
+    enableBottomToolBar: Boolean = true,
+    activeMovement: Movement = Movement.Time()
+) {
     // To hold and control movement transition
-    var activeMovement by remember { mutableStateOf<Movement>(Movement.StandBy) }
+    var activeMovement by remember { mutableStateOf(activeMovement) }
 
     // To control the auto playing animation
     var shouldPlayAutoAnim by remember { mutableStateOf(true) }
 
-    var textInput by remember { mutableStateOf("") }
 
     // Generating degree matrix using the active movement
     val degreeMatrix = activeMovement.getMatrixGenerator().getVerifiedMatrix()
+
+    LaunchedEffect(Unit) {
+        if (activeMovement is Movement.StandBy) {
+            shouldPlayAutoAnim = true
+            return@LaunchedEffect
+        } else {
+            shouldPlayAutoAnim = false
+            while (true) {
+                activeMovement = Movement.Time()
+                delay(activeMovement.durationInMillis.toLong())
+            }
+        }
+    }
 
     KlokkTheme {
         Column(
@@ -117,47 +122,6 @@ fun KlokkApp() {
                 }
 
             }
-
-            BottomToolBar(
-                activeMovement = activeMovement,
-                isAnimPlaying = shouldPlayAutoAnim,
-
-                // TODO :WIP
-                textInput = textInput,
-                onTextInputChanged = { newInput ->
-                    if (newInput.length <= TextMatrixGenerator.MAX_CHARS) {
-                        textInput = newInput.trim().uppercase()
-
-                        if (textInput.isEmpty()) {
-                            // no text
-                            shouldPlayAutoAnim = true
-                            activeMovement = Movement.StandBy
-                        } else {
-                            // has some text
-                            shouldPlayAutoAnim = false
-                            activeMovement = Movement.Text(textInput)
-                        }
-                    }
-                },
-
-                onShowTimeClicked = {
-                    shouldPlayAutoAnim = false // stop auto play
-                    infiniteLoopScope.launch {
-                        while (true) {
-                            activeMovement = Movement.Time() // then show time
-                            delay(activeMovement.durationInMillis.toLong())
-                        }
-                    }
-                },
-                onPlayClicked = {
-                    shouldPlayAutoAnim = true
-                    infiniteLoopScope.cancel()
-                },
-                onStopClicked = {
-                    shouldPlayAutoAnim = false
-                    activeMovement = Movement.StandBy
-                }
-            )
         }
     }
 }

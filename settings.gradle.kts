@@ -4,4 +4,8 @@ pluginManagement {
         mavenCentral()
     }
 }
-rootProject.name = "klokk"
+rootProject.name = "klokk-screensaver"
+
+include(":libklokk")
+include(":klokk")
+include(":screen-saver")

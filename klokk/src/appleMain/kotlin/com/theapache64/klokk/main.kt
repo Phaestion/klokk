@@ -8,9 +8,7 @@ import platform.AppKit.NSApp
 fun main() {
     Window(
         title = "Klokk", size = DpSize(
-            width = (CLOCKS_CONTAINER_WIDTH + PADDING).dp,
-            height = (CLOCKS_CONTAINER_HEIGHT + PADDING + 40).dp
-
+            width = (CLOCKS_CONTAINER_WIDTH + PADDING).dp, height = (CLOCKS_CONTAINER_HEIGHT + PADDING).dp
         )
     ) { KlokkApp() }
 
