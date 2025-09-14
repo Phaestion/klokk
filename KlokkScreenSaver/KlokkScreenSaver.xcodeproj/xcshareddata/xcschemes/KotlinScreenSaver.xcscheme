@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EBBEE0B82ABDC9B80008AEF8"
-               BuildableName = "KotlinScreenSaver.saver"
-               BlueprintName = "KotlinScreenSaver"
-               ReferencedContainer = "container:KotlinScreenSaver.xcodeproj">
+               BuildableName = "KlokkScreenSaver.saver"
+               BlueprintName = "KlokkScreenSaver"
+               ReferencedContainer = "container:KlokkScreenSaver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,9 +50,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBBEE0B82ABDC9B80008AEF8"
-            BuildableName = "KotlinScreenSaver.saver"
-            BlueprintName = "KotlinScreenSaver"
-            ReferencedContainer = "container:KotlinScreenSaver.xcodeproj">
+            BuildableName = "KlokkScreenSaver.saver"
+            BlueprintName = "KlokkScreenSaver"
+            ReferencedContainer = "container:KlokkScreenSaver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

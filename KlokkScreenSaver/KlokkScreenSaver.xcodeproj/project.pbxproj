@@ -13,7 +13,7 @@
 
 /* Begin PBXFileReference section */
 		39328626072C8A4F6BD97121 /* KotlinScreenSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KotlinScreenSaver.swift; sourceTree = "<group>"; };
-		EBBEE0B92ABDC9B80008AEF8 /* KotlinScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KotlinScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBBEE0B92ABDC9B80008AEF8 /* KlokkScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlokkScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBBEE0C72ABDF0580008AEF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,7 +39,7 @@
 		EBBEE0BA2ABDC9B80008AEF8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBBEE0B92ABDC9B80008AEF8 /* KotlinScreenSaver.saver */,
+				EBBEE0B92ABDC9B80008AEF8 /* KlokkScreenSaver.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,9 +66,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EBBEE0B82ABDC9B80008AEF8 /* KotlinScreenSaver */ = {
+		EBBEE0B82ABDC9B80008AEF8 /* KlokkScreenSaver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EBBEE0C22ABDC9B80008AEF8 /* Build configuration list for PBXNativeTarget "KotlinScreenSaver" */;
+			buildConfigurationList = EBBEE0C22ABDC9B80008AEF8 /* Build configuration list for PBXNativeTarget "KlokkScreenSaver" */;
 			buildPhases = (
 				EBBEE0B42ABDC9B80008AEF8 /* Headers */,
 				EBA1F4A62ABE0F1C00BF9DD5 /* Compile Kotlin */,
@@ -80,9 +80,9 @@
 			);
 			dependencies = (
 			);
-			name = KotlinScreenSaver;
+			name = KlokkScreenSaver;
 			productName = KotlinScreenSaver;
-			productReference = EBBEE0B92ABDC9B80008AEF8 /* KotlinScreenSaver.saver */;
+			productReference = EBBEE0B92ABDC9B80008AEF8 /* KlokkScreenSaver.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EBBEE0B32ABDC9B80008AEF8 /* Build configuration list for PBXProject "KotlinScreenSaver" */;
+			buildConfigurationList = EBBEE0B32ABDC9B80008AEF8 /* Build configuration list for PBXProject "KlokkScreenSaver" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EBBEE0B82ABDC9B80008AEF8 /* KotlinScreenSaver */,
+				EBBEE0B82ABDC9B80008AEF8 /* KlokkScreenSaver */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				MARKETING_VERSION = 0.4;
 				OTHER_LDFLAGS = "-Wl,-undefined,dynamic_lookup";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.KotlinScreenSaver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phaestion.KlokkScreenSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -317,7 +317,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				MARKETING_VERSION = 0.4;
 				OTHER_LDFLAGS = "-Wl,-undefined,dynamic_lookup";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.KotlinScreenSaver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phaestion.KlokkScreenSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -328,7 +328,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EBBEE0B32ABDC9B80008AEF8 /* Build configuration list for PBXProject "KotlinScreenSaver" */ = {
+		EBBEE0B32ABDC9B80008AEF8 /* Build configuration list for PBXProject "KlokkScreenSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBBEE0C02ABDC9B80008AEF8 /* Debug */,
@@ -337,7 +337,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBBEE0C22ABDC9B80008AEF8 /* Build configuration list for PBXNativeTarget "KotlinScreenSaver" */ = {
+		EBBEE0C22ABDC9B80008AEF8 /* Build configuration list for PBXNativeTarget "KlokkScreenSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBBEE0C32ABDC9B80008AEF8 /* Debug */,
