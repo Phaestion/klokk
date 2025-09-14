@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,6 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.theapache64.klokk.composable.Clock
 import com.theapache64.klokk.movement.core.Movement
@@ -22,8 +25,8 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun KlokkApp(
-    enableBottomToolBar: Boolean = true,
-    activeMovement: Movement = Movement.Time()
+    activeMovement: Movement = Movement.Time(),
+    fixedClockSize: Int? = null,
 ) {
     // To hold and control movement transition
     var activeMovement by remember { mutableStateOf(activeMovement) }
@@ -31,19 +34,23 @@ fun KlokkApp(
     // To control the auto playing animation
     var shouldPlayAutoAnim by remember { mutableStateOf(true) }
 
-
     // Generating degree matrix using the active movement
     val degreeMatrix = activeMovement.getMatrixGenerator().getVerifiedMatrix()
+
+    var size by remember { mutableStateOf((fixedClockSize ?: 0).dp) }
+    val density = LocalDensity.current.density
 
     LaunchedEffect(Unit) {
         if (activeMovement is Movement.StandBy) {
             shouldPlayAutoAnim = true
             return@LaunchedEffect
         } else {
-            shouldPlayAutoAnim = false
             while (true) {
                 activeMovement = Movement.Time()
                 delay(activeMovement.durationInMillis.toLong())
+                if (shouldPlayAutoAnim) {
+                    shouldPlayAutoAnim = false
+                }
             }
         }
     }
@@ -52,7 +59,13 @@ fun KlokkApp(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(BACKGROUND_COLOR),
+                .background(BACKGROUND_COLOR)
+                .padding(20.dp)
+                .onSizeChanged {
+                    if (fixedClockSize == null) {
+                        size = (it.width / COLUMNS / density).dp
+                    }
+                },
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -66,7 +79,7 @@ fun KlokkApp(
                             needleOneDegree = clockData.degreeOne,
                             needleTwoDegree = clockData.degreeTwo,
                             durationInMillis = activeMovement.durationInMillis,
-                            modifier = Modifier.requiredSize(CLOCK_SIZE.dp)
+                            modifier = Modifier.requiredSize(size)
                         )
                     }
                 }
@@ -120,7 +133,6 @@ fun KlokkApp(
                     activeMovement = Movement.Time() // then show time
                     delay(defaultWaitTime)
                 }
-
             }
         }
     }
